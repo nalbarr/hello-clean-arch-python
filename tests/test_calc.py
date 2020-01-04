@@ -43,3 +43,8 @@ def test_div_by_zero_returns_inf():
     c = Calc()
     res = c.div(5, 0)
     assert res == "inf"
+
+def test_avg_correct_average():
+    c = Calc()
+    res = c.avg([2, 5, 12, 98])
+    assert res == 29.25    

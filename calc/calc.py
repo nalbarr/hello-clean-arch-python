@@ -21,3 +21,6 @@ class Calc:
             return a / b
         except ZeroDivisionError:
             return "inf"
+        
+    def avg(self, xs) -> float:
+        return sum(xs) / len(xs)

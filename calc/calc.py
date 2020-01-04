@@ -25,10 +25,10 @@ class Calc:
     def avg(self, xs, lt=None, ut=None) -> float:
         _xs = xs[:]
 
-        if lt:
+        if lt is not None:
             _xs = [x for x in _xs if x >= lt]
 
-        if ut:
+        if ut is not None:
             _xs = [x for x in _xs if x <= ut]
 
         if not len(_xs):

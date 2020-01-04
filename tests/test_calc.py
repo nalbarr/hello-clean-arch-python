@@ -47,4 +47,9 @@ def test_div_by_zero_returns_inf():
 def test_avg_correct_average():
     c = Calc()
     res = c.avg([2, 5, 12, 98])
-    assert res == 29.25    
+    assert res == 29.25
+
+def test_avg_remove_upper_outliers():
+    c = Calc()
+    res = c.avg([2, 5, 12, 98], ut=90)
+    assert res == pytest.approx(6.333333)    

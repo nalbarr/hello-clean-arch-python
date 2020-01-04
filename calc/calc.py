@@ -22,5 +22,10 @@ class Calc:
         except ZeroDivisionError:
             return "inf"
         
-    def avg(self, xs) -> float:
-        return sum(xs) / len(xs)
+    def avg(self, xs, ut=None) -> float:
+        if not ut:
+            ut = max(xs)
+        
+        _xs = [x for x in xs if x <= ut]
+
+        return sum(_xs) / len(_xs)

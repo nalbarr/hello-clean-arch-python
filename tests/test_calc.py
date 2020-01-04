@@ -74,3 +74,8 @@ def test_avg_lower_threshold_is_included():
     c = Calc()
     res = c.avg([2, 5, 12, 98], lt=2)
     assert res == pytest.approx(29.25)
+
+def test_avg_empty_list():
+    c = Calc()
+    res = c.avg([])
+    assert res == 0

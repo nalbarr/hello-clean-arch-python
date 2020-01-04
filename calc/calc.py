@@ -23,6 +23,9 @@ class Calc:
             return "inf"
         
     def avg(self, xs, lt=None, ut=None) -> float:
+        if xs == []:
+            return 0
+            
         if not lt:
             lt = min(xs)
 

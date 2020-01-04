@@ -79,3 +79,9 @@ def test_avg_empty_list():
     c = Calc()
     res = c.avg([])
     assert res == 0
+
+def test_avg_manages_empty_list_after_outlier_removal():
+    c = Calc()
+    res = c.avg([12, 98], lt=15, ut=90)
+    assert res == 0
+

@@ -23,15 +23,15 @@ class Calc:
             return "inf"
         
     def avg(self, xs, lt=None, ut=None) -> float:
-        if xs == []:
+        _xs = xs[:]
+
+        if lt:
+            _xs = [x for x in _xs if x >= lt]
+
+        if ut:
+            _xs = [x for x in _xs if x <= ut]
+
+        if not len(_xs):
             return 0
-            
-        if not lt:
-            lt = min(xs)
-
-        if not ut:
-            ut = max(xs)
-
-        _xs = [x for x in xs if x >= lt and x<= ut]
 
         return sum(_xs) / len(_xs)

@@ -45,16 +45,32 @@ def test_div_by_zero_returns_inf():
     assert res == "inf"
 
 def test_avg_correct_average():
+    "The function accepts an iterable and computes the average, i.e. avg([2, 5, 12, 98]) == 29.25"
     c = Calc()
     res = c.avg([2, 5, 12, 98])
     assert res == 29.25
 
 def test_avg_remove_upper_outliers():
+    "The function accepts an optional upper threshold. It must remove all the values that are greater than the threshold before computing the average, i.e. avg([2, 5, 12, 98], ut=90) == avg([2, 5, 12])"
     c = Calc()
     res = c.avg([2, 5, 12, 98], ut=90)
     assert res == pytest.approx(6.333333)
 
 def test_avg_remove_lower_outliers():
+    "The function accepts an optional lower threshold. It must remove all the values that are less then the threshold before computing the average, i.e. avg([2, 5, 12, 98], lt=10) == avg([12, 98])"
     c = Calc()
     res = c.avg([2, 5, 12, 98], lt=10)
     assert res == pytest.approx(55)
+
+def test_avg_upper_threshold_is_included():
+    "The upper threshold is not included in the comparison, i.e. avg([2, 5, 12, 98], ut=98) == avg([2, 5, 12, 98])"
+    c = Calc()
+    res = c.avg([2, 5, 12, 98], ut=98)
+    assert res == pytest.approx(29.25)
+
+
+def test_avg_lower_threshold_is_included():
+    "The lower threshold is not included in the comparison, i.e. avg([2, 5, 12, 98], lt=5) == avg([5, 12, 98])"
+    c = Calc()
+    res = c.avg([2, 5, 12, 98], lt=2)
+    assert res == pytest.approx(29.25)
